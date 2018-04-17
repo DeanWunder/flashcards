@@ -1,7 +1,8 @@
+var cards = [];
 $(document).ready(function(){
     // get the json data for the flashcards
     $.ajax({
-        url: 'index.php/json',
+        url: 'http://deanwunder.com/flashcards/index.php/json',
         datatype: 'json',
         success: successful_request
     });
@@ -41,7 +42,21 @@ $(document).ready(function(){
                 break;
         }
         var n_cards = $('#deck').attr('data-n-cards');
+        // find the maximum history number in the cards array.
+        var maxHistory = 0;
+        $.each(cards, function(index, value){
+            if(value.history > maxHistory){
+                maxHistory = value.history;
+            }
+        });
+        var maximalPercentile = 50
         var next_card = Math.floor(Math.random() * n_cards);
+        while(cards[next_card].history/maxHistory > maximalPercentile*0.01){
+            next_card = Math.floor(Math.random() * n_cards);
+            console.log('next card: '+next_card);
+        }
+        cards[next_card].history++;
+        console.log('Next card is: '+next_card);
         $('#deck').attr('data-card', next_card);
         $('#deck .card').css('display', 'none');
         $('#deck .card[data-index="'+next_card+'"]').css('display', 'block');
@@ -51,6 +66,10 @@ $(document).ready(function(){
 
 function successful_request(data){
     console.log(data);
+    cards = data;
+    $.each(cards, function(index, value){
+        value.history = 0;
+    });
     $('#deck').attr('data-n-cards', data.length);
     $.each(data, function(index, value){
         var html = '<div class="card" data-side="1" data-index="'
