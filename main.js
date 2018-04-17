@@ -23,7 +23,6 @@ $(document).ready(function(){
     });
     $('#show-next').click(function(){
         // set all cards to be showing the display-first value (english, pinyin, hanzi)  only
-        console.log($('#display-first').val());
         switch($('#display-first').val()){
             case 'english':
                 $('.pinyin').css('display', 'none');
@@ -51,7 +50,7 @@ $(document).ready(function(){
         });
         var maximalPercentile = 50
         var next_card = Math.floor(Math.random() * n_cards);
-        while(cards[next_card].history/maxHistory > maximalPercentile*0.01){
+        while(cards[next_card].history/maxHistory > maximalPercentile*0.01 && cards[next_card].history != maxHistory){
             next_card = Math.floor(Math.random() * n_cards);
             console.log('next card: '+next_card);
         }
@@ -61,8 +60,6 @@ $(document).ready(function(){
         $('#deck .card').css('display', 'none');
         $('#deck .card[data-index="'+next_card+'"]').css('display', 'block');
     });
-    $('#show-next').click();
-    
 });
 
 function successful_request(data){
@@ -84,4 +81,5 @@ function successful_request(data){
                     +'</div></div>';
         $('#deck').append(html);
     });
+    $('#show-next').click();
 }
