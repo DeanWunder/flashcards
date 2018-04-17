@@ -1,7 +1,7 @@
 <?php
     if(isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] == '/json' ){
         header('Content-Type: application/json');
-        $db = new PDO('mysql:dbname=ambility_flashcards;host=localhost', 'ambility_main', '99wcisftw123');
+        require_once('mysql.php');
         $stmt = $db->prepare('SELECT * FROM flashcards');
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -2,7 +2,7 @@ var cards = [];
 $(document).ready(function(){
     // get the json data for the flashcards
     $.ajax({
-        url: 'http://deanwunder.com/flashcards/index.php/json',
+        url: 'index.php/json',
         datatype: 'json',
         success: successful_request
     });
@@ -61,6 +61,7 @@ $(document).ready(function(){
         $('#deck .card').css('display', 'none');
         $('#deck .card[data-index="'+next_card+'"]').css('display', 'block');
     });
+    $('#show-next').click();
     
 });
 
