@@ -31,9 +31,9 @@
         </div>
         <div id="display-first-container">
             <select id="display-first">
-                <option value="english">English</option>
-                <option value="pinyin">Pinyin</option>
-                <option value="hanzi">Hanzi</option>
+                <option value="english">Display English First</option>
+                <option value="pinyin">Display Pinyin First</option>
+                <option value="hanzi">Display Characters First</option>
             </select>
         </div>
         <div id="display-side-options">
