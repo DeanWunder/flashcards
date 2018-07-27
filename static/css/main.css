@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    color: white;
+    background: #F16541;
+}
+header {
+    background: #BF112E;
+    border-bottom: 5px solid #02173E;
+}
+header h1{
+    margin: 0;
+    padding: 15px;
+}
+main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+.deck {
+    flex-basis: 400px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid red;
+    margin: 10px;
+    padding: 10px;
+}
+.deck:hover{
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+.deck h2{
+    text-align: center;
+}
