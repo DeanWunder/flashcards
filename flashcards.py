@@ -9,6 +9,11 @@ def root():
     decks = query_database('SELECT * FROM `decks`;')
     return render_template('root.html', decks=decks)
 
+@app.route('/deck/<deckId>')
+def show_deck(deckId):
+    cards = query_database('SELECT * FROM `cardsInDecks` WHERE `deck` = ?', (deckId,))
+    return cards
+
 @app.route('/json')
 def json():
     dictionary = open('cedict_ts.u8', 'r')

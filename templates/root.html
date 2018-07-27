@@ -17,24 +17,17 @@
     </head>
     <body>
         <header>
-            <h1>Flashcard Decks</h1>
+            <h1>Dean's Flashcards</h1>
         </header>
         <main>
+            <div id="decks">
             {% for deck in decks: %}
-
-            <div class="deck">
-                <h2>{{ deck['name'] }}</h2>
-            </div>
-            
+                <a href="/deck/{{deck['id']}}">
+                <div class="deck">
+                    <h3>{{ deck['name'] }}</h3>
+                </div>
+                </a>
             {% endfor %}
-            <div class="deck">
-                <h2>Test 1</h2>
-            </div>
-            <div class="deck">
-                <h2>Test 1</h2>
-            </div>
-            <div class="deck">
-                <h2>Test 1</h2>
             </div>
         </main>
     </body>
